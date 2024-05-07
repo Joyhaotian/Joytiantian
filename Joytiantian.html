@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joytiantian</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .bg {
+    /* 使用生成的风景背景图片 */
+    background-image: url('https://joytiantian.oss-cn-chengdu.aliyuncs.com/images/wallpaper.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .search-box {
+    position: absolute;
+    bottom: 20%; /* 根据黄金分割比例调整 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, 50%);
+    width: 61.8%; /* 搜索框的新宽度 */
+  }
+
+  .search-box input[type="text"] {
+    width: 100%; /* 搜索框内文本框的宽度 */
+    padding: 10px;
+    margin: 0 auto; /* 水平居中 */
+    border: 1px solid #ccc; /* 边框颜色 */
+    border-radius: 30px; /* 椭圆形边框 */
+    background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  }
+
+  .search-box form {
+    display: flex; /* 表单内元素水平布局 */
+    justify-content: center; /* 水平居中 */
+  }
+
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="search-box">
+    <form action="https://www.baidu.com/s" method="get">
+      <input type="text" name="wd" placeholder="这世界总有人在忙忙碌碌寻宝藏" style="display: block;">
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
