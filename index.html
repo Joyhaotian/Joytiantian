@@ -25,7 +25,14 @@
     transform: translate(-50%, 50%);
     width: 61.8%; /* 搜索框的新宽度 */
   }
-
+  @media (max-width: 768px) {
+    .search-box {
+    position: absolute;
+    bottom: 60%; /* 根据黄金分割比例调整 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, 50%);
+    width: 61.8%; /* 搜索框的新宽度 */
+}
   .search-box input[type="text"] {
     width: 100%; /* 搜索框内文本框的宽度 */
     padding: 10px;
