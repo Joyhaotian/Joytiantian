@@ -23,15 +23,15 @@
     bottom: 20%; /* 根据黄金分割比例调整 */
     left: 50%; /* 水平居中 */
     transform: translate(-50%, 50%);
-    width: 61.8%; /* 搜索框的新宽度 */
+   transition: backdrop-filter 0.5s ease; 
   }
 /* 媒体查询，仅针对屏幕宽度小于768px的设备 */
 @media (max-width: 768px) {
   .search-box {
     position: fixed; /* 固定在屏幕底部 */
-    bottom: 0;
-    left: 0;
-    width: 100%; /* 宽度调整为100% */
+    bottom: 80%;
+    left: 50%;
+    width: 61.8%%; /* 宽度调整为100% */
     transform: none; /* 移除转换 */
   }
 }
