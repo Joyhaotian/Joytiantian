@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joytiantian</title>
-<style>
+<audio autoplay loop>
+  <source src="Music/music.mp3" type="audio/mpeg">
+</audio>
+<style>  
   body, html {
     height: 100%;
     margin: 0;
@@ -51,25 +54,32 @@
   }
   @media (max-width: 768px) {
     .bg { 
-      background: rgba(238, 153, 153, 0.809)
-  }
+      background: rgba(136, 201, 247, 0.784); /* 修改了这里的颜色值 */
+    }
     .search-box {
-    position: fix;
-    bottom: 50%; /* 根据黄金分割比例调整 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, 50%);
-    width: 61.8%; /* 搜索框的新宽度 */
-    search-box input[type="text"] {
-    width: 100%; /* 搜索框内文本框的宽度 */
-    padding: 10px;
-    margin: 0 auto; /* 水平居中 */
-    border: 1px solid #ccc; /* 边框颜色 */
-    border-radius: 30px; /* 椭圆形边框 */
-    background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
-    backdrop-filter: blur(10px); /* 毛玻璃效果 */
-    transition: background 0.5s, backdrop-filter 0.5s; /* 添加过渡效果 */
-  }
+      position: absolute;
+      bottom: 70%; /* 根据黄金分割比例调整 */
+      left: 50%; /* 水平居中 */
+      transform: translate(-50%, 50%);
+      width: 61.8%; /* 搜索框的新宽度 */
+    }
+    .search-box input[type="text"] { /* 添加了点以指定类选择器 */
+      width: 100%; /* 搜索框内文本框的宽度 */
+      padding: 10px;
+      margin: 0 auto; /* 水平居中 */
+      border: 1px solid #f06c82; /* 边框颜色 */
+      border-radius: 30px; /* 椭圆形边框 */
+      background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+      backdrop-filter: blur(10px); /* 毛玻璃效果 */
+      transition: background 0.5s, backdrop-filter 0.5s; /* 添加过渡效果 */
+    }
 
+    .search-box input[type="text"]:focus {
+      background: rgba(255, 192, 203, 0.7); /* 点击时背景变浅红色 */
+      backdrop-filter: blur(5px); /* 点击时背景模糊 */
+      transform: scale(1.1); /* 点击时放大一点 */
+    }
+  }
 </style>
 </head>
 <body>
@@ -77,10 +87,31 @@
 <div class="bg">
   <div class="search-box">
     <form action="https://www.baidu.com/s" method="get">
-      <input type="text" name="wd" placeholder="这世界总有人在忙忙碌碌寻宝藏" style="display: block;">
+      <input type="text" id="searchInput" name="wd" placeholder="这世界总有人在忙忙碌碌寻宝藏" style="display: block;">
     </form>
   </div>
 </div>
+
+<script>
+  // 检测设备类型并更新占位符
+  function updatePlaceholder() {
+    var input = document.getElementById('searchInput');
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      input.placeholder = 'Baidu Search'; // 手机设备显示
+    } else {
+      input.placeholder = '这世界总有人在忙忙碌碌寻宝藏'; // 非手机设备显示
+      // 创建音频元素并自动播放
+      var audio = document.createElement('audio');
+      audio.autoplay = true;
+      audio.loop = true;
+      audio.src = 'Music/music.mp3'; // 确保路径正确
+      document.body.appendChild(audio);
+    }
+  }
+  // 在页面加载时调用函数
+  window.onload = updatePlaceholder;
+</script>
 
 </body>
 </html>
