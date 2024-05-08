@@ -15,27 +15,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; /* 添加这一行来固定背景图片 */
     overflow: hidden;
-    transition: backdrop-filter 0.5s ease; 
+    transition: backdrop-filter 0.5s ease; /* 添加过渡效果 */
   }
   .search-box {
     position: absolute;
     bottom: 20%; /* 根据黄金分割比例调整 */
     left: 50%; /* 水平居中 */
     transform: translate(-50%, 50%);
-   transition: backdrop-filter 0.5s ease; 
+    width: 61.8%; /* 搜索框的新宽度 */
   }
-/* 媒体查询，仅针对屏幕宽度小于768px的设备 */
-@media (max-width: 768px) {
-  .search-box {
-  
-  position: absolute; /* 固定位置 */
-  bottom: 38.2vh; /* 视口高度的38.2%，即上黄金分割线位置 */
-  left: 50%; /* 水平居中 */
-  transform: translate(-50%, -50%); /* 确保完全居中 */
-  }
-}
+
   .search-box input[type="text"] {
     width: 100%; /* 搜索框内文本框的宽度 */
     padding: 10px;
