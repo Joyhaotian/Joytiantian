@@ -93,9 +93,9 @@
     backdrop-filter: blur(5px);} 
   .search-box input[type="text"]:focus {
       border: 1px solid black;
-      background: rgba(255, 192, 203, 0.7); /* 点击时背景变浅红色 */
-      backdrop-filter: blur(5px); /* 点击时背景模糊 */
-      /* 点击时放大一点transform: scale(1.1);  */
+      background: rgb(255, 186, 186); /* 点击时背景变浅红色 */
+      backdrop-filter: blur(1px); /* 点击时背景模糊 */
+      transition: background 2s, backdrop-filter 2s; /* 添加过渡效果 */
     }
     .search-box form {
     display: flex; /* 表单内元素水平布局 */
@@ -118,7 +118,7 @@
   var searchBox = document.querySelector('.search-box input[type="text"]');
   // 监听搜索框的聚焦事件
   searchBox.addEventListener('focus', function() {
-    document.getElementById('bg').style.filter = 'blur(4px) brightness(50%)';
+    document.getElementById('bg').style.filter = 'blur(4px) brightness(30%)';
   });
   // 监听搜索框的失焦事件
   searchBox.addEventListener('blur', function() {
