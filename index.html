@@ -1,144 +1,149 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joytiantian</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-  }
-  .bg { 
-    background-image: url('images/wallpaper.jpg');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s ease; /* 添加过渡效果 */
-    z-index: 1; /* 设置背景的z-index值 */
-    position: fixed; /* 固定背景位置 */
-    width: 100%; /* 背景宽度 */
-    top: 0; /* 背景顶部对齐 */
-    left: 0; /* 背景左侧对齐 */
-  }
-  .search-box {
-    position: absolute; /* 相对定位 */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joytiantian</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .bg { 
+            background-image: url('images/wallpaper.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: 0.5s ease;
+            z-index: 1;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .search-box {
+            position: absolute;
+            z-index: 2;
+            bottom: 25%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 61.8%;
+        }
+        .search-box input[type="text"] {
+            z-index: 3;
+            width: 100%;
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px solid #393939c1;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            transition: background 0.5s, backdrop-filter 0.5s;
+        }
+        .search-box input[type="text"]:focus {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .search-box form {
+            display: flex;
+            justify-content: center;
+        }
+        #weather {
+    color: #393939c1;
+    display: none; 
+    position: relative;
     z-index: 2;
-    bottom: 25%; /* 根据黄金分割比例调整 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, 50%);
-    width: 61.8%; /* 搜索框的新宽度 */; /* 确保搜索框在背景之上 */
-    /* 其他样式保持不变 */
-  }
-  .search-box input[type="text"] {
-    z-index: 3; /* 确保文本框在搜索框之上 */
-    backdrop-filter: none; /* 移除文本框的毛玻璃效果 */
-    width: 100%; /* 搜索框内文本框的宽度 */
-    padding: 10px;
-    margin: 0 auto; /* 水平居中 */
-    border: 1px solid #ccc; /* 边框颜色 */
-    border-radius: 30px; /* 椭圆形边框 */
-    background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
-    backdrop-filter: blur(10px); /* 毛玻璃效果 */
-    transition: background 0.5s, backdrop-filter 0.5s; /* 添加过渡效果 */
-  }
-  .search-box input[type="text"]:focus {
-    background: rgba(255, 255, 255, 0.7); /* 点击时背景变亮 */
-    backdrop-filter: blur(5px); /* 点击时背景模糊 */
+    top: 38.2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 17%; 
+    height: 17%; 
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    transition: background 0.5s, backdrop-filter 0.5s;
+    padding: 20px;
+    border-radius: 30px; 
     
-  }
-  .search-box form {
-    display: flex; /* 表单内元素水平布局 */
-    justify-content: center; /* 水平居中 */
-  }
-
-  @media (max-width: 768px) {
-    .bg { 
-      background: rgba(136, 201, 247, 0.784); /* 修改了这里的颜色值 */
-      height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s ease; /* 添加过渡效果 */
-    z-index: 1; /* 设置背景的z-index值 */
-    position: fixed; /* 固定背景位置 */
-    width: 100%; /* 背景宽度 */
-    top: 0; /* 背景顶部对齐 */
-    left: 0; /* 背景左侧对齐 */
-    }
-    .search-box {
-    position: absolute; /* 相对定位 */
-    z-index: 2;
-    bottom: 50%; /* 根据黄金分割比例调整 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, 50%);
-    width: 61.8%; /* 搜索框的新宽度 */; /* 确保搜索框在背景之上 */
-    /* 其他样式保持不变 */
-  }
-    .search-box input[type="text"] { /* 添加了点以指定类选择器 */
-      z-index: 3; /* 确保文本框在搜索框之上 */
-    backdrop-filter: none; /* 移除文本框的毛玻璃效果 */
-    width: 100%; /* 搜索框内文本框的宽度 */
-    padding: 10px;
-    margin: 0 auto; /* 水平居中 */
-      border: 1px solid #f06c82; /* 边框颜色 */
-      border-radius: 30px; /* 椭圆形边框 */
-      background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
-      backdrop-filter: blur(10px); /* 毛玻璃效果 */
-    transition: background 0.5s, backdrop-filter 0.5s; /* 添加过渡效果 */
-    }
-.search-box input[type="text"]::selection {
-    background: #000000;
-    backdrop-filter: blur(5px);} 
-  .search-box input[type="text"]:focus {
-      border: 1px solid black;
-      background: rgb(255, 186, 186); /* 点击时背景变浅红色 */
-      backdrop-filter: blur(1px); /* 点击时背景模糊 */
-      transition: background 2s, backdrop-filter 2s; /* 添加过渡效果 */
-    }
-    .search-box form {
-    display: flex; /* 表单内元素水平布局 */
-    justify-content: center; /* 水平居中 */
-  }
-
-  }
-</style>
+}
+        @media (max-width: 768px) {
+            #weather {
+    border: 1px solid #f06c82;
+}
+            .bg { 
+                background: rgba(136, 201, 247, 0.784);
+            }
+            .search-box {
+                bottom: 38.2%;
+            }
+            .search-box input[type="text"] {
+                border: 1px solid #f06c82;
+            }
+            .search-box input[type="text"]:focus {
+                background: rgb(255, 186, 186);
+                backdrop-filter: blur(1px);
+                transition: background 2s, backdrop-filter 2s;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="bg" id="bg"></div>
-  <div class="search-box">
-    <form action="https://www.baidu.com/s" method="get">
-      <input type="text" id="searchInput" name="wd" placeholder="Baidu Search" style="display: block;">
-    </form>
-  </div>
-  <audio id="backgroundMusic" src="Music/music.mp3" type="audio/mp3" autoplay></audio>
-  <script>
-  // 获取搜索框元素
-  var searchBox = document.querySelector('.search-box input[type="text"]');
-  // 监听搜索框的聚焦事件
-  searchBox.addEventListener('focus', function() {
-    document.getElementById('bg').style.filter = 'blur(4px) brightness(30%)';
-  });
-  // 监听搜索框的失焦事件
-  searchBox.addEventListener('blur', function() {
-    document.getElementById('bg').style.filter = 'none';
-  });
-
-  // 根据屏幕尺寸调整占位符文本
-  function adjustPlaceholder() {
+    <div class="bg" id="bg"></div>
+    <div class="search-box">
+        <form action="https://www.baidu.com/s" method="get">
+            <input type="text" id="searchInput" name="wd" placeholder="Baidu Search" style="display: block;">
+        </form>
+    </div>
+    <div id="weather">
+    </div>
+    <audio id="backgroundMusic" src="Music/music.mp3" type="audio/mp3" autoplay></audio>
+    <script>
+        var searchBox = document.querySelector('.search-box input[type="text"]');
+        searchBox.addEventListener('focus', function() {
+            document.getElementById('bg').style.filter = 'blur(4px) brightness(30%)';
+            document.getElementById('weather').style.display = 'none';
+        });
+        searchBox.addEventListener('blur', function() {
+            document.getElementById('bg').style.filter = 'none';
+            document.getElementById('weather').style.display = 'block';
+        });
+        function adjustPlaceholder() {
     var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (width > 768) { // 电脑版
+    if (width > 768) { 
       document.getElementById('searchInput').placeholder = '这世界总有人在忙忙碌碌寻宝藏';
-    } else { // 手机版
+    } else { 
       document.getElementById('searchInput').placeholder = 'Baidu Search';
     }
   }
-
-  // 在页面加载时调整占位符文本
   window.onload = adjustPlaceholder;
-  // 在窗口大小改变时调整占位符文本
   window.onresize = adjustPlaceholder;
-  </script>
+
+        window.onload = function() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    fetch('http://restapi.amap.com/v3/ip?key=ffb90f3eb03ad3354f9ec97b5a22cb47&ip=' + data.ip)
+                        .then(response => response.json())
+                        .then(ipData => {
+                            if (ipData.status === '1') {
+                                fetch('https://restapi.amap.com/v3/weather/weatherInfo?city=' + ipData.adcode + '&key=ffb90f3eb03ad3354f9ec97b5a22cb47')
+                                .then(response => response.json())
+                                    .then(weatherData => {
+                                        if (weatherData.status === '1') {
+                                            const weather = weatherData.lives[0];
+                                            document.getElementById('weather').innerHTML = ` <p>${weather.city}</p>
+                                                <p>${weather.weather}</p>
+                                                <p>${weather.temperature}°C</p>
+                                                <br> <!
+                                            `;
+                                            document.getElementById('weather').style.display = 'block';
+                                        }
+                                    });
+                            }
+                        });
+                });
+        };
+    </script>
 </body>
 </html>
