@@ -109,10 +109,10 @@
   <div class="bg" id="bg"></div>
   <div class="search-box">
     <form action="https://www.baidu.com/s" method="get">
-      <input type="text" name="wd" placeholder="这世界总有人在忙忙碌碌寻宝藏" style="display: block;" onfocus="document.getElementById('bg').style.filter = 'blur(4px) brightness(50%)';" onblur="document.getElementById('bg').style.filter = 'none';">
+      <input type="text" id="searchInput" name="wd" placeholder="Baidu Search" style="display: block;">
     </form>
   </div>
-  
+  <audio id="backgroundMusic" src="Music/music.mp3" type="audio/mp3" autoplay></audio>
   <script>
   // 获取搜索框元素
   var searchBox = document.querySelector('.search-box input[type="text"]');
@@ -124,7 +124,21 @@
   searchBox.addEventListener('blur', function() {
     document.getElementById('bg').style.filter = 'none';
   });
+
+  // 根据屏幕尺寸调整占位符文本
+  function adjustPlaceholder() {
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (width > 768) { // 电脑版
+      document.getElementById('searchInput').placeholder = '这世界总有人在忙忙碌碌寻宝藏';
+    } else { // 手机版
+      document.getElementById('searchInput').placeholder = 'Baidu Search';
+    }
+  }
+
+  // 在页面加载时调整占位符文本
+  window.onload = adjustPlaceholder;
+  // 在窗口大小改变时调整占位符文本
+  window.onresize = adjustPlaceholder;
   </script>
-  
-  </body>
-  </html>
+</body>
+</html>
