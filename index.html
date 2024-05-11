@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -64,6 +64,8 @@
     backdrop-filter: blur(10px);
     transition: background 0.5s, backdrop-filter 0.5s;
     padding: 20px;
+    justify-content: center;
+    align-items: center; 
     border-radius: 30px; 
     
 }
@@ -135,7 +137,7 @@
                                             document.getElementById('weather').innerHTML = ` <p>${weather.city}</p>
                                                 <p>${weather.weather}</p>
                                                 <p>${weather.temperature}°C</p>
-                                                <br> <!
+                                                <p>$ <br> 
                                             `;
                                             document.getElementById('weather').style.display = 'block';
                                         }
